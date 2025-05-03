@@ -1,0 +1,7 @@
+name: CosmicSoil
+version: '0.0.1'
+main: me.ogali.cosmicsoil.CosmicSoil
+api-version: '1.21'
+prefix: [ CSOIL ]
+authors: [ OG_Ali ]
+description: Add cool soils to Cosmic Sky

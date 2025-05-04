@@ -1,7 +1,6 @@
 package me.ogali.cosmicsoil.soils.behaviors.triggerable_behaviors.growth_behaviors;
 
 import me.ogali.cosmicsoil.soils.contexts.SoilBehaviorContext;
-import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
 import org.bukkit.event.block.BlockGrowEvent;
@@ -33,7 +32,7 @@ public class AcceleratedGrowthBehavior extends GrowthBehavior {
      */
     @Override
     protected void handleGrowth(SoilBehaviorContext context, BlockGrowEvent event) {
-        Block block = context.block();
+        Block block = context.getBlock();
 
         // Ensure the block is ageable (e.g., crops) before proceeding
         if (!(block.getBlockData() instanceof Ageable ageable)) return;
@@ -50,10 +49,16 @@ public class AcceleratedGrowthBehavior extends GrowthBehavior {
         block.setBlockData(ageable);
 
         // Spawn a visual particle effect to indicate accelerated growth
-        block.getWorld().spawnParticle(Particle.GLOW, block.getLocation(), 1, 0.5, 0.5, 0.5);
+        context.getCustomSoil().getVisualProperties().playParticle(block.getLocation());
 
         // Cancel the default growth event to prevent double growth
         event.setCancelled(true);
+    }
+
+    @Override
+    public String getEffectDescription() {
+        return "A chance to accelerate \n" + "growth by "
+                + growthPercent * 100 + "%";
     }
 
 }

@@ -36,7 +36,7 @@ public class BlockGrowthListener implements Listener {
         // If a soil with the given ID exists, handle its behavior using the soil's handler
         SoilRegistry.getInstance()
                 .getSoilById(soilID)
-                .ifPresent(customSoil -> customSoil.getHandler().handle(new SoilBehaviorContext(event, block)));
+                .ifPresent(customSoil -> customSoil.getBehaviorHandler().handle(new SoilBehaviorContext(customSoil, event, block)));
     }
 
 }

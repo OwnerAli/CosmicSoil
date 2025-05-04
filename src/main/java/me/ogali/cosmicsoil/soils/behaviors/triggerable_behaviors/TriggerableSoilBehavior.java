@@ -1,5 +1,6 @@
 package me.ogali.cosmicsoil.soils.behaviors.triggerable_behaviors;
 
+import lombok.Getter;
 import me.ogali.cosmicsoil.CosmicSoil;
 import me.ogali.cosmicsoil.soils.behaviors.SoilBehavior;
 
@@ -8,6 +9,7 @@ import me.ogali.cosmicsoil.soils.behaviors.SoilBehavior;
  * This abstract class provides the foundation for behaviors that depend on
  * a chance to activate, allowing subclasses to define specific behavior logic.
  */
+@Getter
 public abstract class TriggerableSoilBehavior implements SoilBehavior {
 
     // The probability (0.0 to 1.0) that this behavior will trigger.

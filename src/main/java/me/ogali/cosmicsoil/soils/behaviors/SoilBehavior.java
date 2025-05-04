@@ -15,4 +15,6 @@ public interface SoilBehavior {
      */
     void handle(SoilBehaviorContext context);
 
+    String getEffectDescription();
+
 }

@@ -1,5 +1,6 @@
 package me.ogali.cosmicsoil;
 
+import com.jeff_media.customblockdata.CustomBlockData;
 import lombok.Getter;
 import me.ogali.cosmicsoil.listeners.BlockBreakListener;
 import me.ogali.cosmicsoil.listeners.BlockGrowthListener;
@@ -35,6 +36,7 @@ public final class CosmicSoil extends JavaPlugin {
         pluginManager.registerEvents(new BlockPlaceListener(), this);
         pluginManager.registerEvents(new BlockBreakListener(), this);
         pluginManager.registerEvents(new BlockGrowthListener(), this);
+        CustomBlockData.registerListener(this);
     }
 
 }

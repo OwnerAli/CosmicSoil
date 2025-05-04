@@ -1,5 +1,6 @@
 package me.ogali.cosmicsoil.soils.handler;
 
+import lombok.Getter;
 import me.ogali.cosmicsoil.soils.behaviors.SoilBehavior;
 import me.ogali.cosmicsoil.soils.contexts.SoilBehaviorContext;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * Handles the execution of soil behaviors by dispatching them to a list of handlers.
  * This class ensures that all registered behaviors are executed in the context provided.
  */
+@Getter
 public final class SoilBehaviorHandler {
     // List of behaviors to be executed
     private final List<SoilBehavior> behaviors;

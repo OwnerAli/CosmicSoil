@@ -31,7 +31,7 @@ public abstract class GrowthBehavior extends TriggerableSoilBehavior {
         if (!(shouldTrigger())) return;
 
         // Ensure the event is a BlockGrowEvent before proceeding.
-        if (!(context.event() instanceof BlockGrowEvent event)) return;
+        if (!(context.getEvent() instanceof BlockGrowEvent event)) return;
 
         // Delegate the growth handling logic to the subclass implementation.
         this.handleGrowth(context, event);

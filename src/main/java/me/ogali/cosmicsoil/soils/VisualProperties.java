@@ -1,6 +1,5 @@
 package me.ogali.cosmicsoil.soils;
 
-import me.ogali.cosmicsoil.displays.BehaviorPropertyDisplay;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.jetbrains.annotations.Nullable;
@@ -16,5 +15,4 @@ public class VisualProperties {
         if (this.particle == null) return;
         location.getWorld().spawnParticle(particle, location, 1, 0.5, 0.5, 0.5);
     }
-
 }

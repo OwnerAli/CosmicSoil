@@ -16,10 +16,7 @@ public class BasicGrowthSoil extends CustomSoil {
 
     /**
      * Constructs a BasicGrowthSoil instance with predefined behavior.
-     * The AcceleratedGrowthBehavior is initialized with:
-     * - A 50% chance to trigger.
-     * - A 50% growth acceleration factor.
-     */
+     **/
     public BasicGrowthSoil() {
         super("basic_growth", new VisualProperties(Particle.GLOW),
                 new AcceleratedGrowthBehavior(0.5, 0.5));
@@ -27,17 +24,34 @@ public class BasicGrowthSoil extends CustomSoil {
 
     @Override
     public Optional<ItemStack> makeCustomItem() {
+        // Create a custom item representing this soil type
         ItemBuilder itemBuilder = new ItemBuilder(Material.FARMLAND)
                 .setName("&7&lBasic Growth Soil")
                 .glowing()
-                .addLoreLines("&fInfused with cosmic energy, this",
+                .addLoreLines(
+                        "&fInfused with cosmic energy, this",
                         "&fsoil nurtures your plants,",
                         "&funlocking their hidden potential.",
                         " ",
-                        "&6&lEffects");
-        behaviorHandler.getBehaviors().forEach(soilBehavior ->
-                itemBuilder.addLoreLine("&f- " + soilBehavior.getEffectDescription()));
+                        "&6&lEffects"
+                );
 
+        // Add behavior descriptions to the item lore
+        behaviorHandler.getBehaviors().forEach(soilBehavior -> {
+            // Split multi-line descriptions by newline character
+            String[] lines = soilBehavior.getEffectDescription().split("\\n");
+
+            // Format the first line with bullet point, subsequent lines indented
+            for (int i = 0; i < lines.length; i++) {
+                if (i == 0) {
+                    itemBuilder.addLoreLine("&f- " + lines[i]);
+                } else {
+                    itemBuilder.addLoreLine("&f  " + lines[i]);
+                }
+            }
+        });
+
+        // Use parent class method to finalize the custom item creation
         return super.makeCustomItem(itemBuilder.build());
     }
 

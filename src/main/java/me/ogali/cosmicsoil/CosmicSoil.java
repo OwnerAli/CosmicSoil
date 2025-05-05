@@ -2,6 +2,7 @@ package me.ogali.cosmicsoil;
 
 import com.jeff_media.customblockdata.CustomBlockData;
 import lombok.Getter;
+import me.ogali.cosmicsoil.commands.SoilGiveCommand;
 import me.ogali.cosmicsoil.listeners.BlockBreakListener;
 import me.ogali.cosmicsoil.listeners.BlockGrowthListener;
 import me.ogali.cosmicsoil.listeners.BlockPlaceListener;
@@ -24,6 +25,7 @@ public final class CosmicSoil extends JavaPlugin {
         instance = this;
         this.random = new Random();
         this.registerListeners();
+        registerCommand("soilgive", new SoilGiveCommand());
     }
 
     @Override

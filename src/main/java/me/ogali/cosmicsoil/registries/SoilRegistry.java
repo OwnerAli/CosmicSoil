@@ -3,6 +3,7 @@ package me.ogali.cosmicsoil.registries;
 import me.ogali.cosmicsoil.soils.CustomSoil;
 import me.ogali.cosmicsoil.soils.growth_soil.BasicGrowthSoil;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -21,6 +22,10 @@ public class SoilRegistry {
 
     public Optional<CustomSoil> getSoilById(String id) {
         return Optional.ofNullable(soilMap.get(id));
+    }
+
+    public Collection<String> getAllIds() {
+        return soilMap.keySet();
     }
 
     //#region Lazy Initialization

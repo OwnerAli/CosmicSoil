@@ -1,6 +1,5 @@
 package me.ogali.cosmicsoil.listeners;
 
-import me.ogali.cosmicsoil.registries.SoilRegistry;
 import me.ogali.cosmicsoil.soils.CustomSoil;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,9 +14,6 @@ public class BlockPlaceListener implements Listener {
 
     @EventHandler
     public void onPlace(BlockPlaceEvent event) {
-        event.getPlayer().getInventory().addItem(SoilRegistry.getInstance().getSoilById("basic_growth").orElseThrow()
-                .makeCustomItem().orElseThrow());
-
         // Try to extract soil ID from the item the player is placing
         CustomSoil.getSoilFromItem(event.getItemInHand())
                 .ifPresent(customSoil -> customSoil.place(event.getBlockPlaced()));
